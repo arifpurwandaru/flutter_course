@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import './product.dart';
 
 class ProductManager extends StatefulWidget{
-  String startingProduct;
+  final String startingProduct;
   
   ProductManager(this.startingProduct);
 
@@ -31,6 +31,7 @@ class _ProductManagerState extends State<ProductManager>{
               margin: EdgeInsets.all(10.0),
               child: RaisedButton(
                 child: Text('Add Picture'),
+                color: Theme.of(context).primaryColor,
                 onPressed: () {
                   setState(() {
                     _products.add('Advanced Food Tester');
