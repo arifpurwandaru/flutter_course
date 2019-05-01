@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Jangkrik'),
         ),
-        body: ProductManager('Jangkrik Naga Tirta'),
+        body: ProductManager(startingProduct: 'Food Tester',),
       ),
     );
   }
