@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import './pages/product_detail.dart';
 
 class Products extends StatelessWidget {
-  final List<Map<String,String>> products;
+  final List<Map<String, String>> products;
+  final Function deleteProduct;
 
-  Products(this.products);
+  Products(this.products, this.deleteProduct);
 
   Widget _buildProductItem(BuildContext context, int index) {
     return Card(
@@ -18,10 +19,17 @@ class Products extends StatelessWidget {
             children: <Widget>[
               FlatButton(
                 child: Text('Product Details'),
-                onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => ProductDetail(products[index]))),
+                onPressed: () => Navigator.push<bool>(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    ProductDetail(products[index])))
+                        .then((bool value) {//value didapat dari product detail waktu pop (back) pas klik tombol DELETE
+                          print(value);
+                          if (value) {
+                            deleteProduct(index);
+                          }
+                    }),
               )
             ],
           )

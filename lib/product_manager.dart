@@ -31,6 +31,13 @@ class _ProductManagerState extends State<ProductManager> {
     });
   }
 
+  void _deleteProduct(int index){
+    setState(() {
+     _products.removeAt(index); 
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -39,7 +46,7 @@ class _ProductManagerState extends State<ProductManager> {
           margin: EdgeInsets.all(10.0),
           child: ProductController(_addProduct),
         ),
-        Expanded(child: Products(_products)),
+        Expanded(child: Products(_products,_deleteProduct)),
       ],
     );
   }
