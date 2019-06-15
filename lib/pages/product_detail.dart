@@ -1,19 +1,29 @@
 import 'package:flutter/material.dart';
 
 class ProductDetail extends StatelessWidget {
+  final Map<String,String> param;
+
+  ProductDetail(this.param);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Product Detail'),
+          title: Text(param['title']),
         ),
         body: Column(
           children: <Widget>[
-            Text('This is the product details'),
-            RaisedButton(
-              child: Text('BACK'),
-              onPressed: () => Navigator.pop(context),
-            )
+            Image.asset(param['imageUrl']),
+            Container(
+                padding: EdgeInsets.all(10.0),
+                child: Text(param['description'])),
+            Container(
+                padding: EdgeInsets.all(10.0),
+                child: RaisedButton(
+                  color: Theme.of(context).accentColor,
+                  child: Text('BACK'),
+                  onPressed: () => Navigator.pop(context),
+                ))
           ],
         ));
   }

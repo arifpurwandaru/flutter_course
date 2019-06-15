@@ -15,17 +15,17 @@ class ProductManager extends StatefulWidget {
 }
 
 class _ProductManagerState extends State<ProductManager> {
-  List<String> _products = [];
+  List<Map<String,String>> _products = [];
 
   @override
   void initState() {
     super.initState();
     if (widget.startingProduct != null) {
-      _products.add(widget.startingProduct);
+      _products.add({'title':widget.startingProduct,'imageUrl':'assets/food.jpg','description':widget.startingProduct});
     }
   }
 
-  void _addProduct(String product) {
+  void _addProduct(Map<String,String> product) {
     setState(() {
       _products.add(product);
     });
