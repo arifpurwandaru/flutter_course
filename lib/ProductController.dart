@@ -12,7 +12,7 @@ class ProductController extends StatelessWidget{
                 child: Text('Add Picture'),
                 color: Theme.of(context).primaryColor,
                 onPressed: () {
-                 addProduct('Bingung Kokehan Parameter'); 
+                 addProduct('Sweets'); 
                 },
               );
   }
