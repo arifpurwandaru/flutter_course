@@ -9,25 +9,37 @@ class ProductAdmin extends StatelessWidget {
     return DefaultTabController(
         length: 2,
         child: Scaffold(
-          appBar: AppBar(
-            title: Text('Product Admin'),
-            bottom: TabBar(
-              tabs: <Widget>[
-                Tab(
-                  icon: Icon(Icons.create),
-                  text: 'Create Product',
-                ),
-                Tab(
-                  icon: Icon(Icons.list),
-                  text: 'My Product',
-                )
-              ],
+            drawer: Drawer(
+              child: Column(
+                children: <Widget>[
+                  AppBar(
+                    title: Text('Pilih'),
+                    automaticallyImplyLeading: false,
+                  ),
+                  ListTile(
+                    title: Text('All Products'),
+                    onTap: () => Navigator.pushNamed(context, '/'),
+                  )
+                ],
+              ),
             ),
-          ),
-          body: TabBarView(children: <Widget>[
-            ProductCreatePage(),
-            ProductListPage()
-          ],)
-        ));
+            appBar: AppBar(
+              title: Text('Product Admin'),
+              bottom: TabBar(
+                tabs: <Widget>[
+                  Tab(
+                    icon: Icon(Icons.create),
+                    text: 'Create Product',
+                  ),
+                  Tab(
+                    icon: Icon(Icons.list),
+                    text: 'My Product',
+                  )
+                ],
+              ),
+            ),
+            body: TabBarView(
+              children: <Widget>[ProductCreatePage(), ProductListPage()],
+            )));
   }
 }
