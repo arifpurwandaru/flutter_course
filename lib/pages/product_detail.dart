@@ -6,12 +6,35 @@ class ProductDetail extends StatelessWidget {
 
   ProductDetail(this.param);
 
+  _showWarningDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Are You Sure?'),
+            content: Text('This action cannot be undone!!'),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('Cancel'),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+              FlatButton(child: Text('Continue'),onPressed: (){
+                Navigator.pop(context); //pop the dialog (destroy)
+                Navigator.pop(context,true);//pass boolean true when pop (back)
+              },)
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        onWillPop: (){
+        onWillPop: () {
           print('Back button pressed!!');
-          Navigator.pop(context,false);
+          Navigator.pop(context, false);
           return Future.value(false);
         },
         child: Scaffold(
@@ -29,8 +52,7 @@ class ProductDetail extends StatelessWidget {
                     child: RaisedButton(
                       color: Theme.of(context).accentColor,
                       child: Text('DELETE'),
-                      onPressed: () => Navigator.pop(
-                          context, true), //pass boolean true when pop (back)
+                      onPressed: () => _showWarningDialog(context), 
                     ))
               ],
             )));
