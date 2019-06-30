@@ -8,8 +8,10 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
-  String emailValue;
-  String passwordValue;
+  String _emailValue;
+  String _passwordValue;
+  bool _acceptTerms = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,15 +25,24 @@ class _AuthPageState extends State<AuthPage> {
               TextField(
                 decoration: InputDecoration(labelText: 'E-Mail'),
                 keyboardType: TextInputType.emailAddress,
-                onChanged: (String value){
-                  emailValue = value;
+                onChanged: (String value) {
+                  _emailValue = value;
                 },
               ),
               TextField(
                 decoration: InputDecoration(labelText: 'Password'),
                 obscureText: true,
-                onChanged: (String value){
-                  passwordValue = value;
+                onChanged: (String value) {
+                  _passwordValue = value;
+                },
+              ),
+              SwitchListTile(
+                title: Text('Accept Terms'),
+                value: _acceptTerms,
+                onChanged: (bool value) {
+                  setState(() {
+                   _acceptTerms = value; 
+                  });
                 },
               ),
               SizedBox(
@@ -42,8 +53,8 @@ class _AuthPageState extends State<AuthPage> {
                 textColor: Colors.white,
                 child: Text('LOGIN'),
                 onPressed: () {
-                  print(emailValue);
-                  print(passwordValue);
+                  print(_emailValue);
+                  print(_passwordValue);
                   Navigator.pushReplacementNamed(context, '/product');
                 },
               ),
