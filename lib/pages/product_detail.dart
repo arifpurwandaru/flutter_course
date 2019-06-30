@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 class ProductDetail extends StatelessWidget {
-  final Map<String, String> param;
+  final Map<String, dynamic> param;
 
   ProductDetail(this.param);
 
