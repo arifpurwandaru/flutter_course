@@ -6,6 +6,7 @@ class Products extends StatelessWidget {
   Products(this.products);
 
   Widget _buildProductItem(BuildContext context, int index) {
+    print('test 123');
     return Card(
       child: Column(
         children: <Widget>[
